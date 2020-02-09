@@ -12,7 +12,7 @@ include "header.php";
     <div class="btn-group">
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" onclick="showmodal($(this))"><i
                 class="fas fa-plus fa-sm text-white-50"></i> New</a>
-                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-upload fa-sm text-white-50"></i> Import Data</a>
+                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm btn-upload"><i class="fas fa-upload fa-sm text-white-50"></i> Import Data</a>
     </div>
 
 </div>
@@ -53,10 +53,43 @@ include "header.php";
         </div>
     </div>
 </div>
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="import_data.php" id="form-import" method="post" enctype="multipart/form-data">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">เลือกไฟล์นำเข้าข้อมูลพนักงาน</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <input type="file" name="upload_data" accept=".csv" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success btn-import" data-dismiss="modal" value="ตกลง">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <?php
 include "footer.php";
 ?>
 <script>
+    $(".btn-upload").click(function(){
+        $("#myModal").modal("show");
+    });
     var dataTablex = $("#dataTable").DataTable({
         "processing": true,
         "serverSide": true,

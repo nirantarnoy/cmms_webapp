@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2020-02-06 22:04:14
+Date: 2020-02-09 22:29:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -42,21 +42,47 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` VALUES ('1', 'TB304040', null, 'Tarlek', 'Tarnoy', 'niran@ff.com', '09884848898', null, null, null, null, null, null);
 
 -- ----------------------------
+-- Table structure for `dirparty`
+-- ----------------------------
+DROP TABLE IF EXISTS `dirparty`;
+CREATE TABLE `dirparty` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of dirparty
+-- ----------------------------
+INSERT INTO `dirparty` VALUES ('1', 'HR', null);
+INSERT INTO `dirparty` VALUES ('2', 'พนักงาน', null);
+INSERT INTO `dirparty` VALUES ('3', 'มหาวิทยาลัย', null);
+INSERT INTO `dirparty` VALUES ('4', 'สนง.ตำรวจ', null);
+INSERT INTO `dirparty` VALUES ('5', 'กระทรวงแรงงาน', null);
+INSERT INTO `dirparty` VALUES ('6', 'กงสุล', null);
+INSERT INTO `dirparty` VALUES ('7', 'สถานทูต', null);
+
+-- ----------------------------
 -- Table structure for `employee`
 -- ----------------------------
 DROP TABLE IF EXISTS `employee`;
 CREATE TABLE `employee` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `prefix` int(2) DEFAULT NULL,
   `emp_no` varchar(255) DEFAULT NULL,
   `fname` varchar(255) DEFAULT NULL,
   `lname` varchar(255) DEFAULT NULL,
-  `gender` int(11) DEFAULT NULL,
-  `dob` date DEFAULT NULL,
+  `position` varchar(255) DEFAULT NULL,
+  `period` varchar(255) DEFAULT NULL,
+  `effective_date` datetime DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `mobile` varchar(255) DEFAULT NULL,
+  `existing_wp` varchar(255) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
   `customer_id` int(11) DEFAULT NULL,
-  `position` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
+  `gender` int(11) DEFAULT NULL,
   `emp_start_date` datetime DEFAULT NULL,
   `created_at` int(11) DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
@@ -68,7 +94,7 @@ CREATE TABLE `employee` (
 -- ----------------------------
 -- Records of employee
 -- ----------------------------
-INSERT INTO `employee` VALUES ('1', '200001', 'นิรันดร์', 'วังญาติ', '1', '2020-01-28', 'dfdf@cdd.com', '098848448', null, '1', '1', '2020-02-05 15:44:13', null, null, null, null);
+INSERT INTO `employee` VALUES ('1', null, '200001', 'นิรันดร์', 'วังญาติ', '1', null, null, 'dfdf@cdd.com', '098848448', null, '2020-01-28', null, '1', '1', '2020-02-05 15:44:13', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `job`
@@ -120,11 +146,17 @@ CREATE TABLE `job_title` (
   `title` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of job_title
 -- ----------------------------
+INSERT INTO `job_title` VALUES ('1', 'รับแจ้งข้อมูล', null);
+INSERT INTO `job_title` VALUES ('2', 'ติดต่อ/เช็คข้อมูล', null);
+INSERT INTO `job_title` VALUES ('3', 'ส่งเอกสารเพื่อขอลายเซ็น', null);
+INSERT INTO `job_title` VALUES ('4', 'ยื่นเอกสาร', null);
+INSERT INTO `job_title` VALUES ('5', 'รับเอกสาร', null);
+INSERT INTO `job_title` VALUES ('6', 'ส่งมอบงาน', null);
 
 -- ----------------------------
 -- Table structure for `user`
