@@ -10,7 +10,8 @@ if(!isset($_SESSION['userid'])){
 unset($_SESSION['msg-success']);
 
 include("common/dbcon.php");
-
+include("common/wpstatus.php");
+include("common/prefix.php");
 // $sql1 = "TRUNCATE TABLE product";
 // $connect->query($sql1);
 
@@ -35,7 +36,7 @@ if(isset($_FILES['upload_data'])){
         $errors[]="extension not allowed, please choose a CSV file.";
     }
     if(empty($errors)==true){
-        move_uploaded_file($file_tmp,"uploads/employee.csv");
+        move_uploaded_file($file_tmp,"uploads/files/employee.csv");
         echo "Success";
     }else{
         print_r($errors);
@@ -46,7 +47,7 @@ if(isset($_FILES['upload_data'])){
 $upfiles = 'employee.csv';
 //if ($uploaded->saveAs('uploads/files/' . $upfiles)) {
 //echo "okk";return;
-$myfile = 'uploads/' . $upfiles;
+$myfile = 'uploads/files/' . $upfiles;
 //if(file_exists($myfile)){
 //    echo "ok";
 //}else{
@@ -72,38 +73,36 @@ while (($rowData = fgetcsv($file, 10000, ",")) !== FALSE) {
         continue;
     }
     //echo "OK";
-    $val1 = trim($rowData[2]);
-    $val2 = trim($rowData[3]);
-    $val3 =trim($rowData[4]);
-    $val4 =  trim($rowData[5]);
-    $val5 = str_replace(',','',trim($rowData[6]));
-    $val6 = trim($rowData[7]);
-    $val7 = trim($rowData[8]);
-    $val8 = trim($rowData[9]);
-    $val9 = trim($rowData[10]);
+    $val1 = trim($rowData[0]);
+    $val2 = trim($rowData[1]);
+    $val3 =trim($rowData[2]);
+    $val4 =  trim($rowData[3]);
+    $val5 = trim($rowData[4]);//str_replace(',','',trim($rowData[6]));
+    $val6 = str_replace(',','',trim($rowData[5]));
+    $val7 = trim($rowData[6]);
+    $val8 = trim($rowData[7]);
+    $val9 = trim($rowData[8]);
 
-    // $val7 = str_replace('---','0',trim($rowData[6]));
 
-    // $val8 = str_replace('---','0',trim($rowData[7]));
-    // $val9 = str_replace('---','0',trim($rowData[8]));
-    // $val10 = str_replace('---','0',trim($rowData[9]));
-    // $val11 = str_replace('---','0',trim($rowData[10]));
-    // $val12 = trim($rowData[11]); // hq pro
+    $prefix = getPrefixIdByName($val1);
+    $wp_status = getIdByName($val9);
+    $ef_date = date('Y-m-d',strtotime($val6));
 
-    // $val13 = str_replace('---','0',trim($rowData[12]));
-    // $val14 = str_replace('---','0',trim($rowData[13]));
-    // $val15 = str_replace('---','0',trim($rowData[14]));
-    // $val16 = str_replace('---','0',trim($rowData[15]));
-    // $val17 = trim($rowData[16]); // bc pro
-
+    $query = "SELECT * FROM employee WHERE fname='$val2' AND lname='$val3'";
+    if($result1 = $connect->query($query)){
+      if(mysqli_num_rows($result1) >0){
+          continue;
+      }
+    }
 
     $sql = "INSERT INTO employee (prefix,fname,lname,position,period,effective_date,email,mobile,existing_wp)
-           VALUES ('$val1','$val2','$val3','$val4','$val5','$val6','$val7','$val8','$val9')";
-
+           VALUES ('$prefix','$val2','$val3','$val4','$val5','$ef_date','$val7','$val8','$wp_status')";
+    //echo $sql;return;
     if($result = $connect->query($sql)){
         $_SESSION['msg-success'] = 'อัพโหลดไฟล์เสร็จสมบูรณ์';
         header('location:employee.php');
     }else{
+       // echo "no";return;
         $_SESSION['msg-error'] = 'Import file fail';
         header('location:employee.php');
     }

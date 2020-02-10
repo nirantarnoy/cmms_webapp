@@ -57,7 +57,7 @@ include "header.php";
 <div class="modal" id="myModal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="import_data.php" id="form-import" method="post" enctype="multipart/form-data">
+            <form action="import_employee.php" id="form-import" method="post" enctype="multipart/form-data">
                 <!-- Modal Header -->
                 <div class="modal-header">
                     <h4 class="modal-title">เลือกไฟล์นำเข้าข้อมูลพนักงาน</h4>
