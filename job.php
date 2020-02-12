@@ -8,10 +8,14 @@ include "header.php";
 include("common/dbcon.php");
 
 include("common/customer_data.php");
+include("common/work_title_data.php");
+include("common/dirparty_data.php");
 include("common/job_status.php");
 //print_r($cus_data);
 
 $cus_data = getCusData($connect); //เรียกใช้งานด้วยชื่อฟังก์ชั่นนี้เพื่อเอาข้อมูลลูกค้าออกมา loop
+$title_data = getTitleData($connect); //เรียกใช้งานด้วยชื่อฟังก์ชั่นนี้เพื่อเอาข้อมูลลูกค้าออกมา loop
+$party_data = getDirData($connect); //เรียกใช้งานด้วยชื่อฟังก์ชั่นนี้เพื่อเอาข้อมูลลูกค้าออกมา loop
 
 $noti_ok = '';
 $noti_error = '';
@@ -94,15 +98,15 @@ if (isset($_SESSION['msg-error'])) {
                     <div class="row">
 
                         <div class="col-lg-3">
-                        <label for="">Job No</label>
-                          <input type="text" class="form-control job_no" name="job_no" value="">
+                        <label for="">เลขที่งาน</label>
+                          <input type="text" class="form-control job_no" name="job_no" value="" readonly>
                         </div>
                         <div class="col-lg-3">
-                        <label for="">Job date</label>
+                        <label for="">วันที่</label>
                           <input type="text" class="form-control job_date" name="job_date" value="">
                         </div>
                         <div class="col-lg-3">
-                        <label for="">Customer id</label>
+                        <label for="">บริษัท</label>
                           <select name="customer_id" id="" class="form-control customer_id" onchange="cus_change($(this))">
                                                 <?php for ($i = 0; $i <= count($cus_data) - 1; $i++): ?>
                                                     <option value="<?= $cus_data[$i]['id'] ?>"><?= $cus_data[$i]['name'] ?></option>
@@ -140,11 +144,29 @@ if (isset($_SESSION['msg-error'])) {
                     <br>
                     <hr style="border: 0;background-color: #fff;border-top: 1px dashed #8c8c8c;">
                     <div class="row">
+                    <div class="col-lg-12">
+                    <div class="input-group">
+                          <select name="title_id" id="" class="form-control title_id" >
+                                                <?php for ($i = 0; $i <= count($title_data) - 1; $i++): ?>
+                                                    <option value="<?= $title_data[$i]['id'] ?>"><?= $title_data[$i]['name'] ?></option>
+                                                <?php endfor; ?>
+                          </select>
+                          <select name="party_id" id="" class="form-control party_id">
+                                                <?php for ($i = 0; $i <= count($party_data) - 1; $i++): ?>
+                                                    <option value="<?= $party_data[$i]['id'] ?>"><?= $party_data[$i]['name'] ?></option>
+                                                <?php endfor; ?>
+                          </select>
+                          <div class="btn btn-primary">อัพเดทขั้นตอนงาน</div>
+                    </div>
+                    </div>
+                    </div>
+                    <br>
+                    <div class="row">
                         <div class="col-lg-12">
                             <table class="table table-bordered table-striped" id="table-employee" width="100%">
                                 <thead>
                                     <tr>
-                                    <th>#</th>
+                                    <th>คำนำหน้า</th>
                                     <th>ชื่อ-นามสกุล</th>
                                     <th>ตำแหน่ง</th>
                                     <th>สถานะ</th>
@@ -227,36 +249,7 @@ $(".job_date,.start_date,.end_date").datepicker(
         //'monthNamesShort': ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'],
     }
 );
-var dataTableEmp = $("#table-employee").DataTable({
-        "processing": true,
-        "serverSide": true,
-        "order": [[0, "asc"]],
-        "pageLength": 100,
-        "filter": false,
-        "ajax": {
-            url: "get_job_employee.php",
-            type: "POST",
-            data: function(data){
-                // Read values
-                // var name = $('#search-name').val();
-                // var plate = $('#search-plate').val();
-                // var prod = $('#search-prod').val();
-                // var index = $('#search-index').val();
-                // // Append to data
-                // data.searchByName = name;
-                // data.searchByPlate = plate;
-                // data.searchByProd = prod;
-                // data.searchByIndex = index;
-            }
-        },
-        "columnDefs": [
-            {
-                //  "targets": [7],
-                //  "orderable": false,
-            },
 
-        ],
-    });
 
     var dataTablex = $("#dataTable").DataTable({
         "processing": true,
@@ -314,9 +307,20 @@ var dataTableEmp = $("#table-employee").DataTable({
 
 
 function showModal(e){
+   
+    $.ajax({
+            'type': 'post',
+            'dataType': 'html',
+            'url': 'job_get_lastno.php',
+            'data': {'id': 0},
+            'success': function (data) {
+                $(".job_no").val(data);
+            }
+        });
     $(".modal-title").html('สร้างใบงาน' );
     clearcontrol();
     $("#jobModal").modal("show");
+
 }
 function clearcontrol(){
     $(".job-recid").val('');
@@ -444,30 +448,65 @@ function showupdate(e) {
         var id = e.val();
         //alert(id);return;
         if(id > 0){
-            $.ajax({
-                'type': 'post',
-                'dataType': 'json',
-                'async': false,
-                'url': 'get_job_employee.php',
-                'data': {'id': recid},
-                'success': function (data) {
-                    if (data.length > 0) {
-                       //  alert(data[0]['prefix']);
-                        // job_no = data[0]['job_no'];
-                        // job_date = data[0]['job_date'];
-                        // customer_id = data[0]['customer_id'];
-                        // start_date = data[0]['start_date'];
-                        // end_date = data[0]['end_date'];
-                        // status = data[0]['status'];
+          // $("#table-employee").DataTable({destroy: true});
+        //    var dataTableEmp = $("#table-employee").DataTable({
+            $("#table-employee").DataTable({
+                "destroy": true,
+    "searching": false,
+                    "processing": true,
+                    "serverSide": true,
+                    "order": [[0, "asc"]],
+                    "pageLength": 100,
+                    "filter": false,
+                    "ajax": {
+                        url: "get_job_employee.php",
+                        type: "POST",
+                        data: function(data){
+                            // Read values
+                            // var name = $('#search-name').val();
+                            // var plate = $('#search-plate').val();
+                            // var prod = $('#search-prod').val();
+                            // var index = $('#search-index').val();
+                            // // Append to data
+                            data.id = id;
+                            // data.searchByPlate = plate;
+                            // data.searchByProd = prod;
+                            // data.searchByIndex = index;
+                        }
+                    },
+                    "columnDefs": [
+                        {
+                            //  "targets": [7],
+                            //  "orderable": false,
+                        },
 
-
-
-                    }
-                },
-                'error': function () {
-                    alert("err");
-                }
+                    ],
             });
+            // $.ajax({
+            //     'type': 'post',
+            //     'dataType': 'html',
+            //     //'async': false,
+            //     'url': 'get_job_employee.php',
+            //     'data': {'id': id},
+            //     'success': function (data) {
+            //         alert(data);return;
+            //         if (data.length > 0) {
+            //            //  alert(data[0]['prefix']);
+            //             // job_no = data[0]['job_no'];
+            //             // job_date = data[0]['job_date'];
+            //             // customer_id = data[0]['customer_id'];
+            //             // start_date = data[0]['start_date'];
+            //             // end_date = data[0]['end_date'];
+            //             // status = data[0]['status'];
+
+
+
+            //         }
+            //     },
+            //     'error': function (data) {
+            //         alert("err"+data);
+            //     }
+            // });
         }
 
 

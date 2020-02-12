@@ -20,6 +20,12 @@ if (isset($_SESSION['msg-error'])) {
 
 include "header.php";
 include("common/prefix.php");
+include("common/customer_data.php");
+$cus_data = getCusData($connect); //เรียกใช้งานด้วยชื่อฟังก์ชั่นนี้เพื่อเอาข้อมูลลูกค้าออกมา loop
+
+
+
+
 ?>
 <!-- Page Heading -->
 <input type="hidden" class="msg-ok" value="<?= $noti_ok ?>">
@@ -84,8 +90,20 @@ include("common/prefix.php");
 
                 <!-- Modal body -->
                 <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label for="">บริษัท</label>
+                          <select name="customer_id" id="" class="form-control customer_id" onchange="cus_change($(this))">
+                                                <?php for ($i = 0; $i <= count($cus_data) - 1; $i++): ?>
+                                                    <option value="<?= $cus_data[$i]['id'] ?>"><?= $cus_data[$i]['name'] ?></option>
+                                                <?php endfor; ?>
+                          </select>
+                        </div>
+                    </div>
+                    <br>
                     <div class="row">
                         <div class="col-lg-12">
+                        <label for="">เลือกไฟล์นำเข้า</label>
                             <input type="file" name="upload_data" accept=".csv" class="form-control">
                         </div>
                     </div>

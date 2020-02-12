@@ -7,6 +7,7 @@ session_start();
 
 include("common/dbcon.php");
 include("common/customer_data.php");
+include("common/prefix.php");
 
 $id = 0;
 if(isset($_POST['id'])){
@@ -16,7 +17,7 @@ if(isset($_POST['id'])){
 
 $stock_type = 0;
 $query_filter = '';
-$query = "SELECT * FROM employee WHERE customer_id='2'";
+$query = "SELECT * FROM employee WHERE customer_id='$id'";
 //if(isset($_POST["searchByName"])){
 //    $query .= ' AND (fname LIKE "%'.$_POST["searchByName"].'%" OR scancode LIKE "%'.$_POST["searchByName"].'%")';
 //}
@@ -64,7 +65,7 @@ if($_POST["length"] != -1)
 {
     $query .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
 }
-
+//echo $query;
 $statement = $connect->prepare($query);
 $statement->execute();
 $result = $statement->fetchAll();
@@ -80,8 +81,7 @@ foreach ($result as $row){
     }
 
 //    $sub_array[] = '<p style="font-weight: bold;text-align: left">'.$row['prod_code'].'</p>';
-//    $sub_array[] = '<p style="font-weight: bold;text-align: left">'.$row['prod_name'].'</p>';
-    $sub_array[] = '<p style="font-weight: ;text-align: left">'.$row['emp_no'].'<input type="hidden" class="tool-code" value="'.$row['id'].'"></p>';
+    $sub_array[] = '<p style="font-weight: ;text-align: left">'.getPrefix($row['prefix']).'<input type="hidden" class="tool-code" value="'.$row['id'].'"></p>';
     $sub_array[] = '<p style="font-weight: ;text-align: left">'.$row['fname']." ".$row['lname'].'</p>';
     $sub_array[] = '<p style="font-weight: ;text-align: left">'.$row['position'].'</p>';
     $sub_array[] = '<p style="font-weight: ;text-align: left">รับแจ้งข้อมูล</p>';
