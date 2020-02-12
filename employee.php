@@ -61,7 +61,7 @@ include("common/prefix.php");
                     <th>เริ่มงานวันที่</th>
                     <th>อีเมล์</th>
                     <th>โทรศัพท์</th>
-                    <th>สถานะ</th>
+                    <th>WP</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -116,49 +116,52 @@ include("common/prefix.php");
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-lg-3">
+                            <label for="">Employee No</label>
+                            <input type="text" class="form-control emp_no" name="emp_no" value="">
+                        </div>
+                        <div class="col-lg-3">
                           <label for="">Prefix</label>
                           <select name="prefix" id="" class="form-control prefix">
                                                 <?php $patient_status = showPrefix(); ?>
                                                 <?php for ($i = 0; $i <= count($patient_status) - 1; $i++): ?>
                                                     <option value="<?= $patient_status[$i]['id'] ?>"><?= $patient_status[$i]['name'] ?></option>
                                                 <?php endfor; ?>
-                                            </select> 
+                                            </select>
                         </div>
-                        <div class="col-lg-3">
-                        <label for="">Employee No</label>
-                          <input type="text" class="form-control emp_no" name="emp_no" value=""> 
-                        </div>
+
                         <div class="col-lg-3">
                         <label for="">Fname</label>
-                          <input type="text" class="form-control fname" name="fname" value=""> 
+                          <input type="text" class="form-control fname" name="fname" value="">
                         </div>
                         <div class="col-lg-3">
                         <label for="">Lname</label>
-                          <input type="text" class="form-control lname" name="lname" value=""> 
+                          <input type="text" class="form-control lname" name="lname" value="">
                         </div>
                     </div>
+                    <br>
                     <div class="row">
                         <div class="col-lg-3">
                           <label for="">Position</label>
-                          <input type="text" class="form-control position" name="position" value=""> 
+                          <input type="text" class="form-control position" name="position" value="">
                         </div>
                         <div class="col-lg-3">
                         <label for="">Period</label>
-                          <input type="text" class="form-control period" name="period" value=""> 
+                          <input type="text" class="form-control period" name="period" value="">
                         </div>
                         <div class="col-lg-3">
                         <label for="">Effective date</label>
-                          <input type="text" class="form-control effective_date" name="effective_date" value=""> 
+                          <input type="text" class="form-control effective_date" name="effective_date" value="">
                         </div>
                         <div class="col-lg-3">
                         <label for="">Email</label>
-                          <input type="text" class="form-control email" name="email" value=""> 
+                          <input type="text" class="form-control email" name="email" value="">
                         </div>
                     </div>
+                    <br>
                     <div class="row">
                         <div class="col-lg-3">
                           <label for="">Mobile</label>
-                          <input type="text" class="form-control mobile" name="mobile" value=""> 
+                          <input type="text" class="form-control mobile" name="mobile" value="">
                         </div>
                         <div class="col-lg-3">
                         <label for="">Existing wp</label>
@@ -167,28 +170,29 @@ include("common/prefix.php");
                                                 <?php for ($i = 0; $i <= count($patient_status) - 1; $i++): ?>
                                                     <option value="<?= $patient_status[$i]['id'] ?>"><?= $patient_status[$i]['name'] ?></option>
                                                 <?php endfor; ?>
-                                            </select>  
+                                            </select>
                         </div>
                         <div class="col-lg-3">
                         <label for="">Dob</label>
-                          <input type="text" class="form-control dob" name="dob" value=""> 
+                          <input type="text" class="form-control dob" name="dob" value="">
                         </div>
                         <div class="col-lg-3">
-                        <label for="">Customer id</label>
-                          <input type="text" class="form-control customer_id" name="customer_id" value=""> 
+                        <label for="">Company</label>
+                          <input type="text" class="form-control customer_id" name="customer_id" value="">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-3">
-                          <label for="">Status</label>
-                          <input type="text" class="form-control status" name="status" value=""> 
-                        </div>
-                        <div class="col-lg-3">
-                        <label for="">Gender</label>
-                          <input type="text" class="form-control gender" name="gender" value=""> 
-                        </div>
-                        
-                    </div>
+                    <br>
+<!--                    <div class="row">-->
+<!--                        <div class="col-lg-3">-->
+<!--                          <label for="">Status</label>-->
+<!--                          <input type="text" class="form-control status" name="status" value="">-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-3">-->
+<!--                        <label for="">Gender</label>-->
+<!--                          <input type="text" class="form-control gender" name="gender" value="">-->
+<!--                        </div>-->
+<!---->
+<!--                    </div>-->
                 </div>
 
                 <!-- Modal footer -->
@@ -214,7 +218,50 @@ include "footer.php";
     $(".btn-upload").click(function(){
         $("#myModal").modal("show");
     });
+   $(".effective_date").datepicker(
+       {
+           onSelect: function (date_text) {
+               let arr = date_text.split("/");
+               let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543).toString();
+               $(this).val(new_date);
+               $(this).css("color", "");
 
+               $cal_age = diff_years(new Date(date_text), new Date($(".dob").val()));
+               // alert($cal_age);
+               $(".age_ob").val((543 - ($cal_age - 1)));
+           },
+           beforeShow: function () {
+
+               if ($(this).val() != "") {
+                   let arr = $(this).val().split("/");
+                   let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) - 543).toString();
+                   $(this).val(new_date);
+               }
+
+               $(this).css("color", "black");
+           },
+           onClose: function () {
+
+               $(this).css("color", "");
+
+               if ($(this).val() != "") {
+                   let arr = $(this).val().split("/");
+                   if (parseInt(arr[2]) < 2500) {
+                       let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543).toString();
+                       $(this).val(new_date);
+                   }
+               }
+
+
+           },
+           dateFormat: "dd/mm/yy", //กำหนดรูปแบบวันที่เป็น วัน/เดือน/ปี
+           changeMonth: true,//กำหนดให้เลือกเดือนได้
+           changeYear: true,//กำหนดให้เลือกปีได้
+           showOtherMonths: true,//กำหนดให้แสดงวันของเดือนก่อนหน้าได้
+           //  'dayNamesMin': ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
+           //'monthNamesShort': ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'],
+       }
+   );
     var dataTablex = $("#dataTable").DataTable({
         "processing": true,
         "serverSide": true,
@@ -298,7 +345,7 @@ include "footer.php";
             var created_by = '';
             var updated_at = '';
             var updated_by = '';
-            
+
 
             $.ajax({
                 'type': 'post',
@@ -324,7 +371,7 @@ include "footer.php";
                        // status = data[0]['status'];
                       //  gender = data[0]['gender'];
                         emp_start_date = data[0]['emp_start_date'];
-                        
+
                     }
                 },
                 'error': function () {
@@ -348,7 +395,7 @@ include "footer.php";
             $(".status").val(status);
             $(".gender").val(gender).change();
             $(".emp_start_date").val(emp_start_date);
-            
+
             $(".title").html('แก้ไขข้อมูลพนักงาน' + " รหัส "  );
             $(".action-type").val('update');
             $("#employeeModal").modal("show");

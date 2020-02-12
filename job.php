@@ -8,7 +8,7 @@ include "header.php";
 include("common/dbcon.php");
 
 include("common/customer_data.php");
-
+include("common/job_status.php");
 //print_r($cus_data);
 
 $cus_data = getCusData($connect); //เรียกใช้งานด้วยชื่อฟังก์ชั่นนี้เพื่อเอาข้อมูลลูกค้าออกมา loop
@@ -92,39 +92,49 @@ if (isset($_SESSION['msg-error'])) {
                 <!-- Modal body -->
                 <div class="modal-body">
                     <div class="row">
-                    
+
                         <div class="col-lg-3">
                         <label for="">Job No</label>
-                          <input type="text" class="form-control job_no" name="job_no" value=""> 
+                          <input type="text" class="form-control job_no" name="job_no" value="">
                         </div>
                         <div class="col-lg-3">
                         <label for="">Job date</label>
-                          <input type="text" class="form-control job_date" name="job_date" value=""> 
+                          <input type="text" class="form-control job_date" name="job_date" value="">
                         </div>
                         <div class="col-lg-3">
                         <label for="">Customer id</label>
                           <select name="customer_id" id="" class="form-control customer_id" onchange="cus_change($(this))">
-                                            
                                                 <?php for ($i = 0; $i <= count($cus_data) - 1; $i++): ?>
                                                     <option value="<?= $cus_data[$i]['id'] ?>"><?= $cus_data[$i]['name'] ?></option>
                                                 <?php endfor; ?>
                           </select>
                         </div>
                     </div>
+                    <br>
                     <div class="row">
                         <div class="col-lg-3">
                           <label for="">Start date</label>
-                          <input type="text" class="form-control start_date" name="start_date" value=""> 
+                          <input type="text" class="form-control start_date" name="start_date" value="">
                         </div>
                         <div class="col-lg-3">
                         <label for="">End date</label>
-                          <input type="text" class="form-control end_date" name="end_date" value=""> 
+                          <input type="text" class="form-control end_date" name="end_date" value="">
                         </div>
                         <div class="col-lg-3">
                         <label for="">Status</label>
-                          <input type="text" class="form-control status" name="status" value=""> 
+                            <select name="status" id="status" class="form-control status">
+                                <?php $patient_status = showJobstatus(); ?>
+                                <option value=""></option>
+                                <?php for ($i = 0; $i <= count($patient_status) - 1; $i++): ?>
+                                    <?php
+                                        $text_color ='red';
+                                        if($patient_status[$i]['id'] !=2){$text_color='green';}
+                                    ?>
+                                    <option value="<?= $patient_status[$i]['id'] ?>" style="color: <?=$text_color?>;"><?= $patient_status[$i]['name'] ?></option>
+                                <?php endfor; ?>
+                            </select>
                         </div>
-                        
+
                     </div>
 
                     <br>
@@ -142,11 +152,11 @@ if (isset($_SESSION['msg-error'])) {
                                     <th>-</th>
                                     </tr>
                                 </thead>
-                            </table>        
+                            </table>
                         </div>
                     </div>
-                    
-                    
+
+
                 </div>
 
                 <!-- Modal footer -->
@@ -173,6 +183,50 @@ include "footer.php";
 ?>
 <script>
 notify();
+$(".job_date,.start_date,.end_date").datepicker(
+    {
+        onSelect: function (date_text) {
+            let arr = date_text.split("/");
+            let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543).toString();
+            $(this).val(new_date);
+            $(this).css("color", "");
+
+            $cal_age = diff_years(new Date(date_text), new Date($(".dob").val()));
+            // alert($cal_age);
+            $(".age_ob").val((543 - ($cal_age - 1)));
+        },
+        beforeShow: function () {
+
+            if ($(this).val() != "") {
+                let arr = $(this).val().split("/");
+                let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) - 543).toString();
+                $(this).val(new_date);
+            }
+
+            $(this).css("color", "black");
+        },
+        onClose: function () {
+
+            $(this).css("color", "");
+
+            if ($(this).val() != "") {
+                let arr = $(this).val().split("/");
+                if (parseInt(arr[2]) < 2500) {
+                    let new_date = arr[0] + "/" + arr[1] + "/" + (parseInt(arr[2]) + 543).toString();
+                    $(this).val(new_date);
+                }
+            }
+
+
+        },
+        dateFormat: "dd/mm/yy", //กำหนดรูปแบบวันที่เป็น วัน/เดือน/ปี
+        changeMonth: true,//กำหนดให้เลือกเดือนได้
+        changeYear: true,//กำหนดให้เลือกปีได้
+        showOtherMonths: true,//กำหนดให้แสดงวันของเดือนก่อนหน้าได้
+        //  'dayNamesMin': ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
+        //'monthNamesShort': ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'],
+    }
+);
 var dataTableEmp = $("#table-employee").DataTable({
         "processing": true,
         "serverSide": true,
@@ -258,7 +312,7 @@ var dataTableEmp = $("#table-employee").DataTable({
        $("#form-job").submit();
     });
 
-  
+
 function showModal(e){
     $(".modal-title").html('สร้างใบงาน' );
     clearcontrol();
@@ -287,7 +341,7 @@ function showupdate(e) {
             var created_by = '';
             var updated_at = '';
             var updated_by = '';
-            
+
 
             $.ajax({
                 'type': 'post',
@@ -304,9 +358,9 @@ function showupdate(e) {
                         start_date = data[0]['start_date'];
                         end_date = data[0]['end_date'];
                         status = data[0]['status'];
-                      
-                      
-                        
+
+
+
                     }
                 },
                 'error': function () {
@@ -321,8 +375,8 @@ function showupdate(e) {
             $(".start_date").val(start_date);
             $(".end_date").val(end_date);
             $(".status").val(status);
-            
-            
+
+
             $(".modal-title").html('แก้ไขใบงาน' + " เลขที่ "  );
             $(".action-type").val('update');
             $("#jobModal").modal("show");
@@ -345,7 +399,7 @@ function showupdate(e) {
             // e.attr("href",url);
             // e.trigger("click");
         });
-        
+
     }
 
     function notify() {
@@ -405,9 +459,9 @@ function showupdate(e) {
                         // start_date = data[0]['start_date'];
                         // end_date = data[0]['end_date'];
                         // status = data[0]['status'];
-                      
-                      
-                        
+
+
+
                     }
                 },
                 'error': function () {
@@ -415,7 +469,7 @@ function showupdate(e) {
                 }
             });
         }
-        
+
 
     }
 

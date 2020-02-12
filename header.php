@@ -65,6 +65,8 @@ $result = $statement->fetchAll();
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/jquery-ui.css">
+
     <style>
         @font-face {
             font-family: 'Kanit-Regular';

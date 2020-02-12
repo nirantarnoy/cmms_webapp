@@ -2,30 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb23a9a0-8a18-4d26-ab82-09d020d5dd21" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/common/wpstatus.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/job_status.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/AUTHORS.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/external/jquery/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/images/ui-icons_444444_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/images/ui-icons_555555_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/images/ui-icons_777620_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/images/ui-icons_777777_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/images/ui-icons_cc0000_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/images/ui-icons_ffffff_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/jquery-ui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/jquery-ui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/jquery-ui.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/jquery-ui.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/jquery-ui.structure.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/jquery-ui.structure.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/jquery-ui.theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/jquery-ui.theme.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/prefix.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/prefix.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/For_Application2.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/docs/For_Application2.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/import_employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/import_employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/import_stock_data.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/import_tool.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_fetch.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_fetch2.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_item_fetch.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_stock_fetch.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product_stock_trans_fetch.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/products.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_action.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_export.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_return.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_return_action.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_trans.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/files/product_import.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/files/product_stock_import.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/files/tool_import.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee_fetch.php" beforeDir="false" afterPath="$PROJECT_DIR$/employee_fetch.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/job.php" beforeDir="false" afterPath="$PROJECT_DIR$/job.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,102 +39,51 @@
     <session id="-491996901">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.0" value="2" />
-          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="csv" value="1" />
-          <entry key="php" value="32" />
+          <entry key="php" value="38" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PHP" value="32" />
+          <entry key="PHP" value="38" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="php" value="3789" />
+          <entry key="php" value="4012" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="3789" />
+          <entry key="PHP" value="4012" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/customer_action.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1660">
-              <caret line="83" column="1" selection-start-line="83" selection-start-column="1" selection-end-line="83" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user_fetch.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1040">
-              <caret line="52" column="84" selection-start-line="52" selection-start-column="84" selection-end-line="52" selection-end-column="84" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="27" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/employee.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="58" column="33" lean-forward="true" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/employee_fetch.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2220">
-              <caret line="111" column="81" selection-start-line="111" selection-start-column="81" selection-end-line="111" selection-end-column="81" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/header.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="232" column="17" selection-start-line="232" selection-start-column="17" selection-end-line="232" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/import_employee.php">
+        <entry file="file://$PROJECT_DIR$/job.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="94" column="7" lean-forward="true" selection-start-line="94" selection-start-column="7" selection-end-line="94" selection-end-column="7" />
+            <state relative-caret-position="280">
+              <caret line="56" column="18" lean-forward="true" selection-start-line="56" selection-start-column="18" selection-end-line="56" selection-end-column="18" />
+              <folding>
+                <element signature="n#style#0;n#option#1;n#select#0;n#div#2;n#div#1;n#div#1;n#form#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -140,8 +91,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/prefix.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
+            <state relative-caret-position="100">
+              <caret line="5" column="9" lean-forward="true" selection-end-line="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/job_status.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="237">
+              <caret line="40" column="20" lean-forward="true" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/employee.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="517">
+              <caret line="62" column="37" lean-forward="true" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/employee_fetch.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1443">
+              <caret line="89" column="26" lean-forward="true" selection-start-line="89" selection-start-column="26" selection-end-line="89" selection-end-column="26" />
+              <folding>
+                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -158,6 +145,8 @@
       <find>delete-id</find>
       <find>btn-upload</find>
       <find>myModal</find>
+      <find>job_sta</find>
+      <find>showJo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -167,23 +156,24 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/login_action.php" />
-        <option value="$PROJECT_DIR$/footer.php" />
         <option value="$PROJECT_DIR$/common/dbcon.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/job_fetch.php" />
-        <option value="$PROJECT_DIR$/job.php" />
         <option value="$PROJECT_DIR$/user.php" />
         <option value="$PROJECT_DIR$/get_customer_update.php" />
         <option value="$PROJECT_DIR$/customer_action.php" />
         <option value="$PROJECT_DIR$/customer.php" />
         <option value="$PROJECT_DIR$/customer_fetch.php" />
-        <option value="$PROJECT_DIR$/employee_fetch.php" />
-        <option value="$PROJECT_DIR$/header.php" />
         <option value="$PROJECT_DIR$/common/showWPStatus.php" />
         <option value="$PROJECT_DIR$/common/prefix.php" />
-        <option value="$PROJECT_DIR$/employee.php" />
         <option value="$PROJECT_DIR$/common/wpstatus.php" />
         <option value="$PROJECT_DIR$/import_employee.php" />
+        <option value="$PROJECT_DIR$/footer.php" />
+        <option value="$PROJECT_DIR$/header.php" />
+        <option value="$PROJECT_DIR$/common/job_status.php" />
+        <option value="$PROJECT_DIR$/job.php" />
+        <option value="$PROJECT_DIR$/employee.php" />
+        <option value="$PROJECT_DIR$/employee_fetch.php" />
       </list>
     </option>
   </component>
@@ -203,6 +193,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
       <path value="$PROJECT_DIR$/bootstrap-toasts/package.json" />
+      <path value="$PROJECT_DIR$/js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/package.json" />
       <path value="$PROJECT_DIR$/package.json" />
       <path value="$PROJECT_DIR$/vendor/fontawesome-free/package.json" />
     </packageJsonPaths>
@@ -213,13 +204,14 @@
     <option name="width" value="1915" />
     <option name="height" value="840" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -247,6 +239,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -255,6 +248,11 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\v-work\js" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -286,17 +284,18 @@
       <workItem from="1580730916459" duration="10000" />
       <workItem from="1580733371503" duration="641000" />
       <workItem from="1581263137044" duration="2396000" />
+      <workItem from="1581493884392" duration="4646000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20143000" />
+    <option name="totallyTimeSpent" value="24789000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2751678" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27919462" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Gulp" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -327,13 +326,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/footer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="52" column="48" lean-forward="true" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login_action.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -353,9 +345,7 @@
         <state relative-caret-position="-263" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/product_stock_fetch.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/product_stock_fetch.php" />
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1780">
@@ -367,13 +357,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
           <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/job.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="27" column="115" selection-start-line="27" selection-start-column="115" selection-end-line="27" selection-end-column="115" />
         </state>
       </provider>
     </entry>
@@ -391,13 +374,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/products.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6488">
-          <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/products.php" />
     <entry file="file://$PROJECT_DIR$/customer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3880">
@@ -412,19 +389,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/customer_action.php">
+    <entry file="file://$PROJECT_DIR$/stock_action.php" />
+    <entry file="file://$PROJECT_DIR$/common/wpstatus.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1660">
-          <caret line="83" column="1" selection-start-line="83" selection-start-column="1" selection-end-line="83" selection-end-column="1" />
+        <state relative-caret-position="420">
+          <caret line="36" column="32" lean-forward="true" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stock_action.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="57" column="37" selection-end-line="68" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/uploads/files/employee.csv">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/user_fetch.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -440,48 +414,78 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/employee_fetch.php">
+    <entry file="file://$PROJECT_DIR$/import_employee.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2220">
-          <caret line="111" column="81" selection-start-line="111" selection-start-column="81" selection-end-line="111" selection-end-column="81" />
+        <state relative-caret-position="440">
+          <caret line="94" selection-start-line="94" selection-end-line="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="71" column="46" selection-start-line="71" selection-start-column="46" selection-end-line="71" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="232" column="17" selection-start-line="232" selection-start-column="17" selection-end-line="232" selection-end-column="17" />
+        <state relative-caret-position="260">
+          <caret line="67" column="99" selection-start-line="67" selection-start-column="99" selection-end-line="67" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/customer_action.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="88" column="1" selection-start-line="88" selection-start-column="1" selection-end-line="88" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/prefix.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="9" lean-forward="true" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/job_status.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="40" column="20" lean-forward="true" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/employee.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="58" column="33" lean-forward="true" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
+        <state relative-caret-position="517">
+          <caret line="62" column="37" lean-forward="true" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/wpstatus.php">
+    <entry file="file://$PROJECT_DIR$/employee_fetch.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="36" column="32" lean-forward="true" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+        <state relative-caret-position="1443">
+          <caret line="89" column="26" lean-forward="true" selection-start-line="89" selection-start-column="26" selection-end-line="89" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/uploads/files/employee.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/prefix.php">
+    <entry file="file://$PROJECT_DIR$/job.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/import_employee.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="94" column="7" lean-forward="true" selection-start-line="94" selection-start-column="7" selection-end-line="94" selection-end-column="7" />
+        <state relative-caret-position="280">
+          <caret line="56" column="18" lean-forward="true" selection-start-line="56" selection-start-column="18" selection-end-line="56" selection-end-column="18" />
+          <folding>
+            <element signature="n#style#0;n#option#1;n#select#0;n#div#2;n#div#1;n#div#1;n#form#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

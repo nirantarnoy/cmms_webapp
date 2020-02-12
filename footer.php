@@ -69,6 +69,8 @@
 <script src="vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
+<script src="js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+
 <!-- Page level custom scripts -->
 <!--<script src="js/demo/datatables-demo.js"></script>-->
 

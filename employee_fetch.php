@@ -105,6 +105,10 @@ foreach ($result as $row){
     if($row['status'] == 1){
         $status = '<span class="text-success">Active</span>';
     }
+    $wp = '<span class="text-gray-500">No</span>';
+    if($row['existing_wp'] == 1){
+        $wp = '<span class="text-success">Yes</span>';
+    }
 
 //    $sub_array[] = '<p style="font-weight: bold;text-align: left">'.$row['prod_code'].'</p>';
 //    $sub_array[] = '<p style="font-weight: bold;text-align: left">'.$row['prod_name'].'</p>';
@@ -114,7 +118,7 @@ foreach ($result as $row){
     $sub_array[] = '<p style="font-weight: ;text-align: left">'.date('d/m/Y',strtotime($row['effective_date'])).'</p>';
     $sub_array[] = '<p style="font-weight: ;text-align: left">'.$row['email'].'</p>';
     $sub_array[] = '<p style="font-weight: ;text-align: left">'.$row['mobile'].'</p>';
-    $sub_array[] = '<p style="font-weight: ;text-align: left">'.$status.'</p>';
+    $sub_array[] = '<p style="font-weight: ;text-align: left">'.$wp.'</p>';
 
 
 //    $sub_array[] = '<p style="font-weight: bold;text-align: left">'.date('d/m/Y',strtotime($row['trans_date'])).'</p>';
