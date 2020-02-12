@@ -88,25 +88,39 @@ while (($rowData = fgetcsv($file, 10000, ",")) !== FALSE) {
     $wp_status = getIdByName($val9);
     $ef_date = date('Y-m-d',strtotime($val6));
 
-    $query = "SELECT * FROM employee WHERE fname='$val2' AND lname='$val3'";
-    if($result1 = $connect->query($query)){
-      if(mysqli_num_rows($result1) >0){
-          continue;
-      }
-    }
+    $query = "SELECT count(*) as qty FROM employee WHERE fname='$val2' AND lname='$val3'";
+    $statement = $connect->prepare($query);
+    $statement->execute();
+    $result = $statement->fetchAll();
 
-    $sql = "INSERT INTO employee (prefix,fname,lname,position,period,effective_date,email,mobile,existing_wp)
-           VALUES ('$prefix','$val2','$val3','$val4','$val5','$ef_date','$val7','$val8','$wp_status')";
-    //echo $sql;return;
-    if($result = $connect->query($sql)){
-        $_SESSION['msg-success'] = 'อัพโหลดไฟล์เสร็จสมบูรณ์';
-        header('location:employee.php');
+    $filtered_rows = $statement->rowCount();
+    
+    $chk = 0;
+    foreach ($result as $row){
+          $chk = $row['qty'];
+    }
+    if($chk > 0){
+
     }else{
-       // echo "no";return;
-        $_SESSION['msg-error'] = 'Import file fail';
-        header('location:employee.php');
+        $sql = "INSERT INTO employee (prefix,fname,lname,position,period,effective_date,email,mobile,existing_wp)
+        VALUES ('$prefix','$val2','$val3','$val4','$val5','$ef_date','$val7','$val8','$wp_status')";
+        //echo $sql;return;
+        if($result = $connect->query($sql)){
+            $res+=1;
+        }else{
+            
+        }
     }
+  
+}
 
+if($res){
+    $_SESSION['msg-success'] = 'อัพโหลดไฟล์เสร็จสมบูรณ์';
+    header('location:employee.php');
+}else{
+  // echo "no";return;
+    $_SESSION['msg-error'] = 'Import file fail';
+     header('location:employee.php');
 }
 
 fclose($file);

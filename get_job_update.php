@@ -8,15 +8,24 @@ if (isset($_POST['id'])) {
 }
 
 if ($id) {
-    $query = "SELECT * FROM customer WHERE id='$id' ";
+    $query = "SELECT * FROM job WHERE id='$id' ";
     $statement = $connect->prepare($query);
     $statement->execute();
     $result = $statement->fetchAll();
 
     $filtered_rows = $statement->rowCount();
     foreach ($result as $row) {
-        array_push($data,['id'=>$row['id'],'code'=>$row['code'],'name'=>$row['name'],'fname'=>$row['fname'],'lname'=>$row['lname'],'email'=>$row['email'],'phone'=>$row['phone'],
-            'status'=>$row['status']]);
+       array_push($data,
+       [
+           'id'=>$row['id'],
+           'job_no'=>$row['job_no'],
+           'job_date'=>$row['job_date'],
+           'customer_id'=>$row['customer_id'],
+           'start_date'=>$row['start_date'],
+           'end_date'=>$row['end_date'],
+           'status'=>$row['status'],
+          
+           ]);
     }
 
     echo json_encode($data);

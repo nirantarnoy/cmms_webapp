@@ -7,35 +7,46 @@ if (!isset($_SESSION['userid'])) {
     header("location:loginpage.php");
 }
 include("common/dbcon.php");
-include("models/ProdModel.php");
 
 $id = 0;
 $delete_id = 0;
 $selected = null;
 $userid = 0;
 
-$code = '';
-$name = '';
+$prefix = '';
+$emp_no = '';
 $fname = '';
 $lname = '';
+$position = '';
+$period = '';
+$effective_date = '';
 $email = '';
-$phone = '';
-$status = 0;
+$mobile = '';
+$existing_wp = '';
+$dob = '';
+$customer_id = '';
+$status = '';
+$gender = '';
+$emp_start_date = 0;
+
+
 $action = '';
 
 if (isset($_SESSION['userid'])) {
     $userid = $_SESSION['userid'];
 }
 
+
 if (isset($_POST['selected_item'])) {
     $selected = $_POST['selected_item'];
 }
 
-if(isset($_POST['code'])){
-    $code = $_POST['code'];
+if(isset($_POST['prefix'])){
+    $prefix = $_POST['prefix'];
 }
-if(isset($_POST['name'])){
-    $name = $_POST['name'];
+
+if(isset($_POST['emp_no'])){
+    $emp_no = $_POST['emp_no'];
 }
 if(isset($_POST['fname'])){
     $fname = $_POST['fname'];
@@ -43,14 +54,43 @@ if(isset($_POST['fname'])){
 if(isset($_POST['lname'])){
     $lname = $_POST['lname'];
 }
+if(isset($_POST['position'])){
+    $position = $_POST['position'];
+}
+if(isset($_POST['period'])){
+    $period = $_POST['period'];
+}
+if(isset($_POST['effective_date'])){
+    $effective_date = $_POST['effective_date'];
+
+}
 if(isset($_POST['email'])){
     $email = $_POST['email'];
+
 }
-if(isset($_POST['phone'])){
-    $phone = $_POST['phone'];
+if(isset($_POST['mobile'])){
+    $mobile = $_POST['mobile'];
+}
+
+
+if(isset($_POST['existing_wp'])){
+    $existing_wp = $_POST['existing_wp'];
+}
+if(isset($_POST['dob'])){
+    $dob = $_POST['dob'];
+}
+if(isset($_POST['customer_id'])){
+    $customer_id = $_POST['customer_id'];
 }
 if(isset($_POST['status'])){
     $status = $_POST['status'];
+}
+if(isset($_POST['gender'])){
+    $gender = $_POST['gender'];
+}
+if(isset($_POST['emp_start_date'])){
+    $emp_start_date = $_POST['emp_start_date'];
+
 }
 if(isset($_POST['action_type'])){
     $action = $_POST['action_type'];
@@ -62,25 +102,36 @@ if(isset($_POST['delete_id'])){
     $delete_id = $_POST['delete_id'];
 }
 
+
+
 if($action == 'create'){
     $created_at = time();
     $created_by = $userid;
-    $sql = "INSERT INTO customer(code,name,fname,lname,email,phone,status,created_at,created_by)VALUES('$code','$name','$fname','$lname','$email','$phone','$status','$created_at','$created_by')";
+    $sql = "INSERT INTO employee(prefix,emp_no,fname,lname,position,period,effective_date,email,mobile,existing_wp,dob,customer_id,status,gender,emp_start_date,created_at,created_by)
+    VALUES('$prefix','$emp_no','$fname','$lname','$position','$period','$effective_date','$email','$mobile','$existing_wp','$dob','$customer_id','$status','$gender','$emp_start_date','$created_at','$created_by')";
+    
     if ($result = $connect->query($sql)) {
         $_SESSION['msg-success'] = 'บันทึกข้อมูลเรียบร้อยแล้ว';
-        header('location:customer.php');
+        header('location:employee.php');
     }
 }
 
 if($action == 'update'){
     if($id > 0){
-        //echo $status;return;
+      //  echo $id;return;
         $created_at = time();
         $created_by = $userid;
-        $sql2 = "UPDATE customer SET code='$code',name='$name',fname='$fname',lname='$lname',email='$email',phone='$phone',status='$status',updated_at='$created_at',updated_by='$created_by' WHERE id='$id'";
+        $sql2 = "UPDATE employee SET prefix='$prefix',emp_no='$emp_no',fname='$fname',
+        lname='$lname',position='$position',period='$period',
+        effective_date='$effective_date',email='$email',mobile='$mobile',
+        existing_wp='$existing_wp',dob='$dob',customer_id='$customer_id',
+        status='$status',gender='$gender',emp_start_date='$emp_start_date',
+        updated_at='$created_at',updated_by='$created_by' WHERE id='$id'";
+
+       // echo $sql2;return;
         if ($result2 = $connect->query($sql2)) {
             $_SESSION['msg-success'] = 'บันทึกข้อมูลเรียบร้อยแล้ว';
-            header('location:customer.php');
+            header('location:employee.php');
         }else{
             echo "no";return;
         }
@@ -89,10 +140,10 @@ if($action == 'update'){
 }
 if($action == 'delete'){
     if($delete_id > 0){
-        $sql3 = "DELETE FROM customer WHERE id='$delete_id'";
+        $sql3 = "DELETE FROM employee WHERE id='$delete_id'";
         if ($result3 = $connect->query($sql3)) {
             $_SESSION['msg-success'] = 'ลบข้อมูลเรียบร้อยแล้ว';
-            header('location:customer.php');
+            header('location:employee.php');
         }else{
             echo "no";return;
         }

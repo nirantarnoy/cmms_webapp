@@ -46,5 +46,14 @@ function getPrefixIdByName($name){ //ชื่อฟังก์ชั่น
         $id = loopcheckid($data,$name);
     }
     return $id;
+
+}
+function showYesNo(){ //ชื่อฟังก์ชั่น
+    $data=[
+        ['id'=>1,'name'=>'No'],
+        ['id'=>2,'name'=>'Yes'],
+        
+    ];
+    return $data;
 }
 ?>

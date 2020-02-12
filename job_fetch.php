@@ -6,6 +6,7 @@ session_start();
 //}
 
 include("common/dbcon.php");
+include("common/customer_data.php");
 
 //$current_branch = '';
 //if(isset($_SESSION['branch'])){
@@ -108,8 +109,8 @@ foreach ($result as $row){
 //    $sub_array[] = '<p style="font-weight: bold;text-align: left">'.$row['prod_code'].'</p>';
 //    $sub_array[] = '<p style="font-weight: bold;text-align: left">'.$row['prod_name'].'</p>';
     $sub_array[] = '<p style="font-weight: ;text-align: left">'.$row['job_no'].'<input type="hidden" class="tool-code" value="'.$row['id'].'"></p>';
-    $sub_array[] = '<p style="font-weight: ;text-align: left">'.$row['customer_id'].'</p>';
-    $sub_array[] = '<p style="font-weight: ;text-align: left">'.$row['emp_id'].'</p>';
+    $sub_array[] = '<p style="font-weight: ;text-align: left">'.getCusName($connect,$row['customer_id']).'</p>'; // ต้องส่งไอดีจากตรงนี้เข้าไปหาชื่อมาแสดง
+    $sub_array[] = '<p style="font-weight: ;text-align: left"></p>';
     $sub_array[] = '<p style="font-weight: ;text-align: left">'.$row['start_date'].'</p>';
     $sub_array[] = '<p style="font-weight: ;text-align: left">'.$row['end_date'].'</p>';
     $sub_array[] = '<p style="font-weight: ;text-align: left">'.$status.'</p>';

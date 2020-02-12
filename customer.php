@@ -86,20 +86,27 @@ if(isset($_SESSION['msg-error'])){
                     <div class="row">
                         <div class="col-lg-6">
                             <label for="">รหัส</label>
-                            <input type="text" class="form-control customer-code" name="cust_code" value=""
+                            <input type="text" class="form-control customer-code" name="code" value=""
                                    placeholder="รหัสลูค้า">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="">บริษัท</label>
+                            <input type="text" class="form-control customer-name" name="name" value=""
+                                   placeholder="บริษัท">
                         </div>
                     </div>
                     <br>
                     <div class="row">
+
+                    
                         <div class="col-lg-6">
                             <label for="">ชื่อ</label>
-                            <input type="text" class="form-control customer-fname" name="cust_fname" value=""
+                            <input type="text" class="form-control customer-fname" name="fname" value=""
                                    placeholder="ชื่อ">
                         </div>
                         <div class="col-lg-6">
                             <label for="">นามสกุล</label>
-                            <input type="text" class="form-control customer-lname" name="cust_lname" value=""
+                            <input type="text" class="form-control customer-lname" name="lname" value=""
                                    placeholder="นามสกุล">
                         </div>
                     </div>
@@ -217,6 +224,7 @@ include "footer.php";
        var recid = e.attr("data-id");
        if (recid != '') {
            var code = '';
+           var name = '';
            var fname = '';
            var lname = '';
            var email = '';
@@ -233,6 +241,7 @@ include "footer.php";
                    if (data.length > 0) {
                        // alert(data[0]['display_name']);
                        code = data[0]['code'];
+                       name = data[0]['name'];
                        fname = data[0]['fname'];
                        lname = data[0]['lname'];
                        email = data[0]['email'];
@@ -244,6 +253,7 @@ include "footer.php";
 
            $(".user-recid").val(recid);
            $(".customer-code").val(code);
+           $(".customer-name").val(name);
            $(".customer-fname").val(fname);
            $(".customer-lname").val(lname);
            $(".email").val(email);

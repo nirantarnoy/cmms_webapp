@@ -14,12 +14,11 @@ $delete_id = 0;
 $selected = null;
 $userid = 0;
 
-$code = '';
-$name = '';
-$fname = '';
-$lname = '';
-$email = '';
-$phone = '';
+$job_no = '';
+$job_date = '';
+$customer_id = '';
+$start_date = '';
+$end_date = '';
 $status = 0;
 $action = '';
 
@@ -31,23 +30,20 @@ if (isset($_POST['selected_item'])) {
     $selected = $_POST['selected_item'];
 }
 
-if(isset($_POST['code'])){
-    $code = $_POST['code'];
+if(isset($_POST['job_no'])){
+    $job_no = $_POST['job_no'];
 }
-if(isset($_POST['name'])){
-    $name = $_POST['name'];
+if(isset($_POST['job_date'])){
+    $job_date = $_POST['job_date'];
 }
-if(isset($_POST['fname'])){
-    $fname = $_POST['fname'];
+if(isset($_POST['customer_id'])){
+    $customer_id = $_POST['customer_id'];
 }
-if(isset($_POST['lname'])){
-    $lname = $_POST['lname'];
+if(isset($_POST['start_date'])){
+    $start_date = $_POST['start_date'];
 }
-if(isset($_POST['email'])){
-    $email = $_POST['email'];
-}
-if(isset($_POST['phone'])){
-    $phone = $_POST['phone'];
+if(isset($_POST['end_date'])){
+    $end_date = $_POST['end_date'];
 }
 if(isset($_POST['status'])){
     $status = $_POST['status'];
@@ -63,12 +59,13 @@ if(isset($_POST['delete_id'])){
 }
 
 if($action == 'create'){
+    //echo 'ddd';return;
     $created_at = time();
     $created_by = $userid;
-    $sql = "INSERT INTO customer(code,name,fname,lname,email,phone,status,created_at,created_by)VALUES('$code','$name','$fname','$lname','$email','$phone','$status','$created_at','$created_by')";
+    $sql = "INSERT INTO job(job_no,job_date,customer_id,start_date,end_date,status,created_at,created_by)VALUES('$job_no','$job_date','$customer_id','$start_date','$end_date','$status','$created_at','$created_by')";
     if ($result = $connect->query($sql)) {
         $_SESSION['msg-success'] = 'บันทึกข้อมูลเรียบร้อยแล้ว';
-        header('location:customer.php');
+        header('location:job.php');
     }
 }
 
@@ -77,10 +74,10 @@ if($action == 'update'){
         //echo $status;return;
         $created_at = time();
         $created_by = $userid;
-        $sql2 = "UPDATE customer SET code='$code',name='$name',fname='$fname',lname='$lname',email='$email',phone='$phone',status='$status',updated_at='$created_at',updated_by='$created_by' WHERE id='$id'";
+        $sql2 = "UPDATE job SET job_no='$job_no',job_date='$job_date',customer_id='$customer_id',start_date='$start_date',end_date='$end_date',status='$status',updated_at='$created_at',updated_by='$created_by' WHERE id='$id'";
         if ($result2 = $connect->query($sql2)) {
             $_SESSION['msg-success'] = 'บันทึกข้อมูลเรียบร้อยแล้ว';
-            header('location:customer.php');
+            header('location:job.php');
         }else{
             echo "no";return;
         }
@@ -89,10 +86,10 @@ if($action == 'update'){
 }
 if($action == 'delete'){
     if($delete_id > 0){
-        $sql3 = "DELETE FROM customer WHERE id='$delete_id'";
+        $sql3 = "DELETE FROM job WHERE id='$delete_id'";
         if ($result3 = $connect->query($sql3)) {
             $_SESSION['msg-success'] = 'ลบข้อมูลเรียบร้อยแล้ว';
-            header('location:customer.php');
+            header('location:job.php');
         }else{
             echo "no";return;
         }
