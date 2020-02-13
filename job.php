@@ -166,6 +166,9 @@ if (isset($_SESSION['msg-error'])) {
                             <table class="table table-bordered table-striped" id="table-employee" width="100%">
                                 <thead>
                                     <tr>
+                                    <th>
+                                       <input type="checkbox" class="form-control check-all">
+                                    </th>
                                     <th>คำนำหน้า</th>
                                     <th>ชื่อ-นามสกุล</th>
                                     <th>ตำแหน่ง</th>
@@ -478,9 +481,21 @@ function showupdate(e) {
                         {
                             //  "targets": [7],
                             //  "orderable": false,
+                            "orderable": false,
+                            "className": 'dt-body-center',
+                            "targets": 0,
+                            "render": function(data, type, full, meta){
+                                return '<input type="checkbox" name="id[]" value="'+data+'">';
+                            }
                         },
 
                     ],
+                    "select": [
+                        {
+                            "style": 'os',
+                            "selector": 'td:first-child'
+                        }
+                    ]
             });
             // $.ajax({
             //     'type': 'post',

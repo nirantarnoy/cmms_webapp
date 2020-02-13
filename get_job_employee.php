@@ -81,8 +81,9 @@ foreach ($result as $row){
     }
 
 //    $sub_array[] = '<p style="font-weight: bold;text-align: left">'.$row['prod_code'].'</p>';
-    $sub_array[] = '<p style="font-weight: ;text-align: left">'.getPrefix($row['prefix']).'<input type="hidden" class="tool-code" value="'.$row['id'].'"></p>';
-    $sub_array[] = '<p style="font-weight: ;text-align: left">'.$row['fname']." ".$row['lname'].'</p>';
+$sub_array[] = '';
+$sub_array[] = '<p style="font-weight: ;text-align: left">'.getPrefix($row['prefix']).'<input type="hidden" class="tool-code" value="'.$row['id'].'"></p>';
+$sub_array[] = '<p style="font-weight: ;text-align: left">'.$row['fname']." ".$row['lname'].'</p>';
     $sub_array[] = '<p style="font-weight: ;text-align: left">'.$row['position'].'</p>';
     $sub_array[] = '<p style="font-weight: ;text-align: left">รับแจ้งข้อมูล</p>';
     $sub_array[] = '<p style="font-weight: ;text-align: left">HR SCG VN</p>';
