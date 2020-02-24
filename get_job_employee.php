@@ -81,7 +81,7 @@ foreach ($result as $row){
     }
 
 //    $sub_array[] = '<p style="font-weight: bold;text-align: left">'.$row['prod_code'].'</p>';
-$sub_array[] = '';
+$sub_array[] = '<p style="font-weight: bold;text-align: left"><div class="btn btn-secondary btn-sm"></div></p>';
 $sub_array[] = '<p style="font-weight: ;text-align: left">'.getPrefix($row['prefix']).'<input type="hidden" class="tool-code" value="'.$row['id'].'"></p>';
 $sub_array[] = '<p style="font-weight: ;text-align: left">'.$row['fname']." ".$row['lname'].'</p>';
     $sub_array[] = '<p style="font-weight: ;text-align: left">'.$row['position'].'</p>';
@@ -147,7 +147,7 @@ function get_total_all_records($connect,$query)
 //            'status'=>$row['status'],
 //            'gender'=>$row['gender'],
 //            'emp_start_date'=>$row['emp_start_date'],
-          
+
 //            ]);
 //     }
 

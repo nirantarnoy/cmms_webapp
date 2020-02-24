@@ -310,7 +310,7 @@ $(".job_date,.start_date,.end_date").datepicker(
 
 
 function showModal(e){
-   
+
     $.ajax({
             'type': 'post',
             'dataType': 'html',
@@ -447,6 +447,20 @@ function showupdate(e) {
 
     }
 
+// $('#table-employee tbody>tr').on('change', 'input[type="checkbox"]', function(){
+//     // If checkbox is not checked
+//     alert();
+//     // if(!this.checked){
+//     //     var el = $('#example-select-all').get(0);
+//     //     // If "Select all" control is checked and has 'indeterminate' property
+//     //     if(el && el.checked && ('indeterminate' in el)){
+//     //         // Set visual state of "Select all" control
+//     //         // as 'indeterminate'
+//     //         el.indeterminate = true;
+//     //     }
+//     // }
+// });
+
     function cus_change(e){
         var id = e.val();
         //alert(id);return;
@@ -477,25 +491,25 @@ function showupdate(e) {
                             // data.searchByIndex = index;
                         }
                     },
-                    "columnDefs": [
-                        {
-                            //  "targets": [7],
-                            //  "orderable": false,
-                            "orderable": false,
-                            "className": 'dt-body-center',
-                            "targets": 0,
-                            "render": function(data, type, full, meta){
-                                return '<input type="checkbox" name="id[]" value="'+data+'">';
-                            }
-                        },
-
-                    ],
-                    "select": [
-                        {
-                            "style": 'os',
-                            "selector": 'td:first-child'
-                        }
-                    ]
+                    // "columnDefs": [
+                    //     {
+                    //         //  "targets": [7],
+                    //         //  "orderable": false,
+                    //         "orderable": false,
+                    //         "className": 'dt-body-center',
+                    //         "targets": 0,
+                    //         "render": function(data, type, full, meta){
+                    //             return '<input type="checkbox" name="id[]" class="form-control" value="'+data+'">';
+                    //         }
+                    //     },
+                    //
+                    // ],
+                    // "select": [
+                    //     {
+                    //         "style": 'os',
+                    //         "selector": 'td:first-child'
+                    //     }
+                    // ]
             });
             // $.ajax({
             //     'type': 'post',
