@@ -9,7 +9,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; v-work 2019</span>
+            <span>Copyright &copy; ppp-cmms 2024</span>
         </div>
     </div>
 </footer>
@@ -79,6 +79,9 @@
 <script src="js/numeric-comma.js"></script>
 
 <script src="js/time-mask.js"></script>
+
+<script src="vendor/jquery-select2/js/select2.min.js"></script>
+
 
 </body>
 

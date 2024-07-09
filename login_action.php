@@ -1,7 +1,6 @@
 <?php
 ob_start();
 session_start();
-date_default_timezone_set('Asia/Bangkok');
 include("common/dbcon.php");
 
 $username = '';
@@ -17,15 +16,16 @@ if (isset($_POST['password'])) {
 //echo md5($password);return;
 
 if ($username != '' && $password != '') {
-    $newpass = md5($password);
-    $query = "SELECT * FROM user WHERE username='$username' AND password='$newpass'";
+    //$newpass = md5($password);
+    $query = "SELECT * FROM login WHERE user_name='$username' AND password='$password'";
     $statement = $connect->prepare($query);
     $statement->execute();
     $result = $statement->fetchAll();
     $filtered_rows = $statement->rowCount();
     if ($filtered_rows > 0) {
         foreach ($result as $row) {
-            $_SESSION['userid'] = $row['id'];
+
+            $_SESSION['userid'] = $row['recid'];
 
             if (!empty($_POST["remember"])) {
                 setcookie("member_login", $_POST["username"], time() + (10 * 365 * 24 * 60 * 60));
@@ -35,6 +35,7 @@ if ($username != '' && $password != '') {
                 }
             }
         }
+
         // if(checktime($_SESSION['userid'] , $connect)){
         header('location: index.php');
         // }else{

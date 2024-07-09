@@ -1,10 +1,11 @@
 <?php
 ob_start();
 //session_start();
-
 if (!isset($_SESSION['userid'])) {
+  // echo "xxx";return;
     header("location:loginpage.php");
 }
+
 include("common/dbcon.php");
 include("models/UserModel.php");
 
@@ -29,15 +30,6 @@ if ($user) {
     $displayname = getDisplayname($user, $connect);
 }
 
-$branch_data = null;
-$query = "SELECT DISTINCT(branch) as branch FROM product_stock";
-$statement = $connect->prepare($query);
-$statement->execute();
-$result = $statement->fetchAll();
-
-//$filtered_rows = $statement->rowCount();
-
-//echo $user;return;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +42,7 @@ $result = $statement->fetchAll();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>V-WORK</title>
+    <title>PPP-CMMS</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -66,6 +58,8 @@ $result = $statement->fetchAll();
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="js/jquery-ui-1.12.1.custom/jquery-ui-1.12.1.custom/jquery-ui.css">
+
+    <link rel="stylesheet" href="vendor/jquery-select2/css/select2.min.css">
 
     <style>
         @font-face {
@@ -124,9 +118,9 @@ $result = $statement->fetchAll();
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
             <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
+                <i class="fas fa-tools"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">V-WORK</div>
+            <div class="sidebar-brand-text mx-3">PPP-CMMS</div>
         </a>
 
         <!-- Divider -->
@@ -147,83 +141,15 @@ $result = $statement->fetchAll();
         <div class="sidebar-heading">
             Menu
         </div>
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <!--        <li class="nav-item">-->
-        <!--            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">-->
-        <!--                <i class="fas fa-fw fa-cog"></i>-->
-        <!--                <span>Components</span>-->
-        <!--            </a>-->
-        <!--            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">-->
-        <!--                <div class="bg-white py-2 collapse-inner rounded">-->
-        <!--                    <h6 class="collapse-header">Custom Components:</h6>-->
-        <!--                    <a class="collapse-item" href="buttons.html">Buttons</a>-->
-        <!--                    <a class="collapse-item" href="cards.html">Cards</a>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </li>-->
-        <!---->
-        <!--        <!-- Nav Item - Utilities Collapse Menu -->
-        <!--        <li class="nav-item">-->
-        <!--            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">-->
-        <!--                <i class="fas fa-fw fa-wrench"></i>-->
-        <!--                <span>Utilities</span>-->
-        <!--            </a>-->
-        <!--            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">-->
-        <!--                <div class="bg-white py-2 collapse-inner rounded">-->
-        <!--                    <h6 class="collapse-header">Custom Utilities:</h6>-->
-        <!--                    <a class="collapse-item" href="utilities-color.html">Colors</a>-->
-        <!--                    <a class="collapse-item" href="utilities-border.html">Borders</a>-->
-        <!--                    <a class="collapse-item" href="utilities-animation.html">Animations</a>-->
-        <!--                    <a class="collapse-item" href="utilities-other.html">Other</a>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </li>-->
-        <!---->
-        <!--        <!-- Divider -->
-        <!--        <hr class="sidebar-divider">-->
-        <!---->
-        <!--        <!-- Heading -->
-        <!--        <div class="sidebar-heg">-->
-        <!--            Addons-->
-        <!--        </div>-->
-        <!---->
-        <!--        <!-- Nav Item - Pages Collapse Menu -->
-        <!--        <li class="nav-item">-->
-        <!--            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">-->
-        <!--                <i class="fas fa-fw fa-folder"></i>-->
-        <!--                <span>Pages</span>-->
-        <!--            </a>-->
-        <!--            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">-->
-        <!--                <div class="bg-white py-2 collapse-inner rounded">-->
-        <!--                    <h6 class="collapse-header">Login Screens:</h6>-->
-        <!--                    <a class="collapse-item" href="login.html">Login</a>-->
-        <!--                    <a class="collapse-item" href="register.html">Register</a>-->
-        <!--                    <a class="collapse-item" href="forgot-password.html">Forgot Password</a>-->
-        <!--                    <div class="collapse-divider"></div>-->
-        <!--                    <h6 class="collapse-header">Other Pages:</h6>-->
-        <!--                    <a class="collapse-item" href="404.html">404 Page</a>-->
-        <!--                    <a class="collapse-item" href="blank.html">Blank Page</a>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </li>-->
-
-        <!-- Nav Item - Charts -->
-
+        <li class="nav-item active">
+            <a class="nav-link" href="index.php">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
         <li class="nav-item">
-            <a class="nav-link" href="employee.php">
+            <a class="nav-link" href="workorder.php">
                 <i class="fas fa-fw fa-user"></i>
-                <span>พนักงาน</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="customer.php">
-                <i class="fas fa-fw fa-users"></i>
-                <span>ลูกค้า</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="job.php">
-                <i class="fas fa-fw fa-check"></i>
-                <span>งาน</span></a>
+                <span>ใบแจ้งซ่อม</span></a>
         </li>
 
         <?php if (checkPer($user,"is_user",$connect)): ?>
@@ -265,17 +191,17 @@ $result = $statement->fetchAll();
                 </button>
 
                 <!-- Topbar Search -->
-                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                               aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
+<!--                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">-->
+<!--                    <div class="input-group">-->
+<!--                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."-->
+<!--                               aria-label="Search" aria-describedby="basic-addon2">-->
+<!--                        <div class="input-group-append">-->
+<!--                            <button class="btn btn-primary" type="button">-->
+<!--                                <i class="fas fa-search fa-sm"></i>-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </form>-->
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -286,40 +212,12 @@ $result = $statement->fetchAll();
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $displayname ?>[<?= $branch ?>
-                                ]</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $displayname ?></span>
                             <img class="img-profile rounded-circle" src="img/profile.png">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
-                            <?php if ($branch == 'Center'): ?>
-                                <?php $ismode_all = 'text-gray-400';
-                                if ($viewmode == 'All') {
-                                    $ismode_all = 'text-danger';
-                                } ?>
-                                <a class="dropdown-item view-all" href="changemode.php?mode=All">
-                                    <i class="fas fa-check fa-sm fa-fw mr-2 <?= $ismode_all ?>"></i>
-                                    ทั้งหมด
-                                </a>
-                                <?php foreach ($result as $row): ?>
-                                    <?php $ismode_chk = 'text-gray-400';
-                                    if ($viewmode == $row['branch']) {
-                                        $ismode_chk = 'text-danger';
-                                    } ?>
-                                    <a class="dropdown-item" href="changemode.php?mode=<?= $row['branch'] ?>">
-                                        <i class="fas fa-check fa-sm fa-fw mr-2 <?= $ismode_chk ?>"></i>
-                                        <?= $row['branch'] ?>
-                                    </a>
-                                <?php endforeach; ?>
-                                <div class="dropdown-divider"></div>
-                            <?php endif; ?>
-                            <!--                            <a class="dropdown-item" href="changepwdpage.php?user_id=-->
-                            <? //=$user?><!--">-->
-                            <!--                                <i class="fas fa-check fa-sm fa-fw mr-2 text-gray-400"></i>-->
-                            <!--                                000001-->
-                            <!--                            </a>-->
-
                             <a class="dropdown-item" href="changepwdpage.php?user_id=<?= $user ?>">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 เปลี่ยนรหัสผ่าน

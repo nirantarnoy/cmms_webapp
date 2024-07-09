@@ -18,7 +18,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>V-WORK | Login</title>
+    <title>PPP-CMMS | Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -69,7 +69,7 @@
                 <div class="col-lg-4" style="background: white">
                     <br>
                     <div class="text-center">
-                        <h1>V-WORK</h1>
+                        <h1>PPP-CMMS</h1>
                         <h1 class="h4 text-gray-900 mb-4">ลงชื่อเข้าใช้งานระบบ</h1>
                     </div>
                     <br>
